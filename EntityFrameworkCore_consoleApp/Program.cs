@@ -17,17 +17,11 @@ namespace EntityFrameworkCore_consoleApp
 
                 Console.WriteLine();
 
-                Console.WriteLine("Elenco nomi studenti");
-                var ListaNomiStudenti = context.Studenti.Select(e => e.Nome).ToList();
-                Console.WriteLine(string.Join(Environment.NewLine, ListaNomiStudenti ));
-
-                Console.WriteLine();
-
-                // Mapping tramite api >> vedi le modifiche in ScuolaContext
-                // https://www.entityframeworktutorial.net/code-first/fluent-api-in-code-first.aspx
                 Console.WriteLine("Elenco studenti");
                 var ListaStudenti = context.Studenti.ToList();
                 Console.WriteLine(string.Join(Environment.NewLine, ListaStudenti));
+
+                // Spostiamo la configurazione della connessione al db in un file di configurazione
             }
         }
     }

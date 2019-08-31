@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EntityFrameworkCore_consoleApp.Models
+﻿namespace EntityFrameworkCore_consoleApp.Models
 {
     class Studente
     {
