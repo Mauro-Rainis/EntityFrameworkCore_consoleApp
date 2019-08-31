@@ -1,18 +1,37 @@
 ﻿using EntityFrameworkCore_consoleApp.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using System.IO;
 
 namespace EntityFrameworkCore_consoleApp
 {
     class ScuolaContext : DbContext
     {
+        private static string _connectionString;
+
         public DbSet<Sport> Sport { get; set; }
 
         public DbSet<Studente> Studenti { get; set; }
 
-        // Aggiungo i parametri di connessione al database (da spostare in file di configurazione)
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=.\SQLEXPRESS;Database=Scuola;Trusted_Connection=True;");
+            if (string.IsNullOrEmpty(_connectionString))
+            {
+                LoadConnectionString();
+            }
+
+            optionsBuilder.UseSqlServer(_connectionString);
+        }
+
+        private static void LoadConnectionString()
+        {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", optional: false)
+                ;
+
+            var configuration = builder.Build();
+            _connectionString = configuration.GetConnectionString("DefaultConnection");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
