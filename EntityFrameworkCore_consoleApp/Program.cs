@@ -13,11 +13,6 @@ namespace EntityFrameworkCore_consoleApp
 
                 Console.WriteLine("Elenco sport");
                 var ListaSport = context.Sport.ToList();
-                //foreach (var s in ListaSport)
-                //{
-                //    Console.WriteLine(s.ToString());
-                //}
-                // al posto del foreach posso usare Join
                 Console.WriteLine(string.Join(Environment.NewLine, ListaSport));
 
                 Console.WriteLine();
@@ -26,13 +21,13 @@ namespace EntityFrameworkCore_consoleApp
                 var ListaNomiStudenti = context.Studenti.Select(e => e.Nome).ToList();
                 Console.WriteLine(string.Join(Environment.NewLine, ListaNomiStudenti ));
 
+                Console.WriteLine();
 
-                // Perchè la seguente non funziona? Mi aspetterei la lista di tutti gli studenti seguita dal nome dello sport praticato
-                /*
+                // Mapping tramite api >> vedi le modifiche in ScuolaContext
+                // https://www.entityframeworktutorial.net/code-first/fluent-api-in-code-first.aspx
                 Console.WriteLine("Elenco studenti");
                 var ListaStudenti = context.Studenti.ToList();
                 Console.WriteLine(string.Join(Environment.NewLine, ListaStudenti));
-                */
             }
         }
     }

@@ -23,5 +23,24 @@ namespace EntityFrameworkCore_consoleApp
             optionsBuilder.UseSqlServer(@"Server=.\SQLEXPRESS;Database=Scuola;Trusted_Connection=True;");
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Studente>(entity =>
+            {
+                entity.ToTable("Studenti");
+                entity.Property(e => e.Id);
+                entity.Property(e => e.Nome);
+                entity.OwnsOne(e => e.Sport);
+            }
+            );
+
+            modelBuilder.Entity<Sport>(entity =>
+            {
+                entity.ToTable("Sport");
+            }
+            );
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
