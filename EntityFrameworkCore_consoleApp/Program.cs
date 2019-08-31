@@ -13,11 +13,6 @@ namespace EntityFrameworkCore_consoleApp
 
                 Console.WriteLine("Elenco sport");
                 var ListaSport = context.Sport.ToList();
-                //foreach (var s in ListaSport)
-                //{
-                //    Console.WriteLine(s.ToString());
-                //}
-                // al posto del foreach posso usare Join
                 Console.WriteLine(string.Join(Environment.NewLine, ListaSport));
 
                 Console.WriteLine();
@@ -28,11 +23,17 @@ namespace EntityFrameworkCore_consoleApp
 
 
                 // Perchè la seguente non funziona? Mi aspetterei la lista di tutti gli studenti seguita dal nome dello sport praticato
+                // Non funzionava perchè non avevamo configurato nessun mapping, quindi EFCore tentava di usare il mapping tramite convenzioni
+                // me le tabelle del nostro db non rispettano la convenzione predefinita per il mapping.
+                // Bisogna mappare le classi verso il db usando una delle seguenti:
+                // - mapping tramite API
+                // - mapping tramite data annotation
                 /*
                 Console.WriteLine("Elenco studenti");
                 var ListaStudenti = context.Studenti.ToList();
                 Console.WriteLine(string.Join(Environment.NewLine, ListaStudenti));
                 */
+
             }
         }
     }
