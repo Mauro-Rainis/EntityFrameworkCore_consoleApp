@@ -21,19 +21,13 @@ namespace EntityFrameworkCore_consoleApp
                 var ListaNomiStudenti = context.Studenti.Select(e => e.Nome).ToList();
                 Console.WriteLine(string.Join(Environment.NewLine, ListaNomiStudenti ));
 
+                Console.WriteLine();
 
-                // Perchè la seguente non funziona? Mi aspetterei la lista di tutti gli studenti seguita dal nome dello sport praticato
-                // Non funzionava perchè non avevamo configurato nessun mapping, quindi EFCore tentava di usare il mapping tramite convenzioni
-                // me le tabelle del nostro db non rispettano la convenzione predefinita per il mapping.
-                // Bisogna mappare le classi verso il db usando una delle seguenti:
-                // - mapping tramite API
-                // - mapping tramite data annotation
-                /*
+                // Mapping tramite api >> vedi le modifiche in ScuolaContext
+                // https://www.entityframeworktutorial.net/code-first/fluent-api-in-code-first.aspx
                 Console.WriteLine("Elenco studenti");
                 var ListaStudenti = context.Studenti.ToList();
                 Console.WriteLine(string.Join(Environment.NewLine, ListaStudenti));
-                */
-
             }
         }
     }
