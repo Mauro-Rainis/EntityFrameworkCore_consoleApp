@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace EntityFrameworkCore_consoleApp.Models
@@ -10,6 +11,7 @@ namespace EntityFrameworkCore_consoleApp.Models
 
         public string Nome { get; set; }
 
+        [ForeignKey("Id")]
         public Sport Sport { get; set; }
 
         public override string ToString()
