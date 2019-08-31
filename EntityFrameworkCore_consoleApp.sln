@@ -5,6 +5,11 @@ VisualStudioVersion = 16.0.29123.88
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkCore_consoleApp", "EntityFrameworkCore_consoleApp\EntityFrameworkCore_consoleApp.csproj", "{0C5E5E9E-7D59-4B94-B283-249C8354B51E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{9193F2A2-32A4-4126-8251-53CDEA82AAA5}"
+	ProjectSection(SolutionItems) = preProject
+		Database.sql = Database.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
